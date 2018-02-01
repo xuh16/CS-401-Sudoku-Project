@@ -67,16 +67,40 @@ public class SudokuGame implements SudokuInterface {
                 System.out.println("-----------------");
         }
     }
-    /*
-    static boolean isCellEmpty(int row, int col) {
     
+    static boolean isCellEmpty(int row, int col) {
+        return game[row][col] == EMPTY_CELL;
     }
+    /*
     static boolean isOnlyOneValueAllowedInTheCurrentCell(int row, int col) {
-        
+        return getAllowedValuesInTheCurrentCell(row,col).length == 1;
     }
+    /*
     static int[] getAllowedValuesInTheCurrentCell(int row, int col) {
+        int[] allowedValuesInCurrentRow = getAllowedValuesInCurrentRow(row);
+        int[] allowedValuesInCurrentCol = getAllowedValuesInCurrentCol(col);
+        int[] allowedValuesInCurrentGroup = getAllowedValuesInCurrentGroup(row,col);
         
+        int[] temp = new int[BOARD_SIZE];
+        int index = 0;
+        
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            if (allowedValuesInCurrentRow[i] != 0 &&
+                allowedValuesInCurrentCol[i] != 0 &&
+                allowedValuesInCurrentGroup[i] != 0) {
+                    temp[index] = i+1;
+                    index++;
+            }
+        }
+        
+        int[] allowedValues = new int[index];
+        for (int i = 0; i < index; i++) {
+            allowedValues[i] = temp[i];
+        }
+        
+        return allowedValues;
     }
+    /*
     static int[] getAllowedValuesInCurrentRow(int row) {
         
     }
