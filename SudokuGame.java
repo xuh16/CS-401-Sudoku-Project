@@ -125,9 +125,9 @@ public class SudokuGame /*implements SudokuInterface*/ {
     public boolean hasPuzzleBeenSolved() {
         
     }
-    public void showGameSolvedMessage() {
-        
-    }
 */
+    public void showGameSolvedMessage() {
+        System.out.println("\nGame solved.");
+    }
     
 }
