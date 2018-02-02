@@ -1,22 +1,24 @@
-package sudukogame;
+package sudokugame;
 
 //Max's code
 
 import java.io.*;
 import java.util.Scanner;
+import sudokugame.SudokuInterface;
 
-public class SudokuGame implements SudokuInterface {
+public class SudokuGame /*implements SudokuInterface*/ {
 
     private static final int BOARD_SIZE = 9;
     private static final int GROUP_SIZE = 3;
     private static final int EMPTY_CELL = 0;
     private static int currentStep = 0;
     private static int[][] game;
+
+    public static void main(String[] args) throws IOException {        
+        new SudokuGame();
+    }
     
-    
-    
-    public static void main(String[] args) throws IOException {
-        
+    SudokuGame() throws IOException {
         game = retrieveSudokuGameFromFile("sudokuGame.sud");
         boolean hasAGameUpdateOccured;
         printBoard();
@@ -41,7 +43,7 @@ public class SudokuGame implements SudokuInterface {
         */
     }
     
-    static int[][] retrieveSudokuGameFromFile(String sudokuFile) throws IOException {
+    public int[][] retrieveSudokuGameFromFile(String sudokuFile) throws IOException {
         Scanner fileInput = new Scanner(new File(sudokuFile));
         String oneRow;
         int[][] board = new int[BOARD_SIZE][BOARD_SIZE];
@@ -53,7 +55,7 @@ public class SudokuGame implements SudokuInterface {
         }
         return board;
     }
-    static void printBoard() {
+    public void printBoard() {
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int col = 0; col < BOARD_SIZE; col++) {
                 System.out.print(game[row][col]);
@@ -68,15 +70,15 @@ public class SudokuGame implements SudokuInterface {
         }
     }
     
-    static boolean isCellEmpty(int row, int col) {
+    public boolean isCellEmpty(int row, int col) {
         return game[row][col] == EMPTY_CELL;
     }
     /*
-    static boolean isOnlyOneValueAllowedInTheCurrentCell(int row, int col) {
+    public boolean isOnlyOneValueAllowedInTheCurrentCell(int row, int col) {
         return getAllowedValuesInTheCurrentCell(row,col).length == 1;
     }
     /*
-    static int[] getAllowedValuesInTheCurrentCell(int row, int col) {
+    public int[] getAllowedValuesInTheCurrentCell(int row, int col) {
         int[] allowedValuesInCurrentRow = getAllowedValuesInCurrentRow(row);
         int[] allowedValuesInCurrentCol = getAllowedValuesInCurrentCol(col);
         int[] allowedValuesInCurrentGroup = getAllowedValuesInCurrentGroup(row,col);
@@ -101,29 +103,29 @@ public class SudokuGame implements SudokuInterface {
         return allowedValues;
     }
     /*
-    static int[] getAllowedValuesInCurrentRow(int row) {
+    public int[] getAllowedValuesInCurrentRow(int row) {
         
     }
-    static int[] getAllowedValuesInCurrentCol(int col) {
+    public int[] getAllowedValuesInCurrentCol(int col) {
         
     }
-    static int[] getAllowedValuesInCurrentGroup(int row, int col) {
+    public int[] getAllowedValuesInCurrentGroup(int row, int col) {
         
     }
-    static int[] getAllowedValuesBasedOnTheThreeRules(int[] allowedValuesInCurrentRow, 
+    public int[] getAllowedValuesBasedOnTheThreeRules(int[] allowedValuesInCurrentRow, 
             int[] allowedValuesInCurrentCol, int[] allowedValuesInCurrentGroup) {
         
     }
-    static int getTheUniqueAllowedValue(int row, int col) {
+    public int getTheUniqueAllowedValue(int row, int col) {
         
     }
-    static void updateGame(int allowedValue, int row, int col) {
+    public void updateGame(int allowedValue, int row, int col) {
         
     }
-    static boolean hasPuzzleBeenSolved() {
+    public boolean hasPuzzleBeenSolved() {
         
     }
-    static void showGameSolvedMessage() {
+    public void showGameSolvedMessage() {
         
     }
 */
