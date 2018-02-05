@@ -104,9 +104,52 @@ public class SudokuGame /*implements SudokuInterface*/ {
     }
     /*
     public int[] getAllowedValuesInCurrentRow(int row) {
-        
+        int[] allowedValueInRow = new int[BOARD_SIZE];
+        boolean hasValueInRow;
+        for (int i = 1; i < 10; i++) {
+            hasValueInRow = false;
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                if (game[row][j] == i) {
+                    hasValueInRow = true;
+                }
+            }
+            if (hasValueInRow == false) {
+                allowedValueInRow[i - 1] = i;
+            }
+        }
+        System.out.println("---------------------------------");
+        System.out.print("(");
+        for (int k = 0; k < BOARD_SIZE; k++) {
+            System.out.print(allowedValueInRow[k] + ",");
+        }
+        System.out.println(")     Allowed values in row " + (row + 1));
+        return allowedValueInRow;
+    
     }
+    
     public int[] getAllowedValuesInCurrentCol(int col) {
+        int[] allowedValueInCol = new int[BOARD_SIZE];
+        boolean hasValueInCol;
+        for (int i = 1; i < 10; i++) {
+            hasValueInCol = false;
+            for (int j = 0; j < BOARD_SIZE; j++) {
+
+                if (game[j][col] == i) {
+                    hasValueInCol = true;
+                }
+            }
+
+            if (hasValueInCol == false) {
+                allowedValueInCol[i - 1] = i;
+            }
+        }
+        System.out.print("(");
+        for (int l = 0; l < BOARD_SIZE; l++) {
+            System.out.print(allowedValueInCol[l] + ",");
+        }
+        System.out.println(")     Allowed values in col " + (col + 1));
+
+        return allowedValueInCol;
         
     }
     public int[] getAllowedValuesInCurrentGroup(int row, int col) {
