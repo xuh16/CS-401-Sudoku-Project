@@ -12,6 +12,7 @@ public class SudokuGame /*implements SudokuInterface*/ {
     private static int currentStep = 0;
     private static int[][] game;
 
+    
     public static void main(String[] args) throws IOException {        
         new SudokuGame();
     }
@@ -20,26 +21,23 @@ public class SudokuGame /*implements SudokuInterface*/ {
         game = retrieveSudokuGameFromFile("sudokuGame.sud");
         boolean hasAGameUpdateOccured;
         printBoard();
-        
-        
-        //while (!hasPuzzleBeenSolved()) {
+
+        while (!hasPuzzleBeenSolved()) {
             hasAGameUpdateOccured = false;
             for (int row = 0; row < BOARD_SIZE; row++) {
                 for (int col = 0; col < BOARD_SIZE; col++) {
-//                    if (isCellEmpty(row,col) && isOnlyOneValueAllowedInTheCurrentCell(row,col)) {
-//                        updateGame(getTheUniqueAllowedValue(row,col), row, col);
-//                        hasAGameUpdateOccured = true;
-//                    }
-                      getAllowedValuesInTheCurrentCell(row,col);
+                    if (isCellEmpty(row,col) && isOnlyOneValueAllowedInTheCurrentCell(row,col)) {
+                        updateGame(getTheUniqueAllowedValue(row,col), row, col);
+                        hasAGameUpdateOccured = true;
+                    }
                 }
             }
             if (!hasAGameUpdateOccured) {
                 //End game - puzzle is unsolvable
+                System.out.println("The game is unsolvable");
+                System.exit(0);
             }
-      //  }
-        
-        showGameSolvedMessage();
-        
+        }
     }
     
     public int[][] retrieveSudokuGameFromFile(String sudokuFile) throws IOException {
@@ -192,12 +190,13 @@ public class SudokuGame /*implements SudokuInterface*/ {
 //            int[] allowedValuesInCurrentCol, int[] allowedValuesInCurrentGroup) {
 //        
 //    }
-//    public int getTheUniqueAllowedValue(int row, int col) {
-//        
-//    }
+    public int getTheUniqueAllowedValue(int row, int col) {
+        int[] allowedValues = getAllowedValuesInTheCurrentCell(row,col);
+        return allowedValues[0];
+    }
     public void updateGame(int allowedValue, int row, int col) {
         game[row][col] = allowedValue;
-        System.out.println(allowedValue + " is placed at row: " + row + " column: " + col);
+        System.out.println("\n" + allowedValue + " is placed at row: " + row + " column: " + col + "\n");
         printBoard();
     }
     public boolean hasPuzzleBeenSolved() {
@@ -215,5 +214,5 @@ public class SudokuGame /*implements SudokuInterface*/ {
     public void showGameSolvedMessage() {
         System.out.println("\nGame solved.");
     }
-    
+
 }
