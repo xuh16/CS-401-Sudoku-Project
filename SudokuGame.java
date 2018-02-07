@@ -195,12 +195,22 @@ public class SudokuGame /*implements SudokuInterface*/ {
 //    public int getTheUniqueAllowedValue(int row, int col) {
 //        
 //    }
-//    public void updateGame(int allowedValue, int row, int col) {
-//        //
-//    }
-//    public boolean hasPuzzleBeenSolved() {
-//        
-//    }
+    public void updateGame(int allowedValue, int row, int col) {
+        game[row][col] = allowedValue;
+        System.out.println(allowedValue + " is placed at row: " + row + " column: " + col);
+        printBoard();
+    }
+    public boolean hasPuzzleBeenSolved() {
+        for (int row = 0; row < BOARD_SIZE; row++) {
+            for (int col = 0; col < BOARD_SIZE; col++) {
+                if (game[row][col] == 0) {
+                    return false;
+                }
+            }
+        }
+        showGameSolvedMessage();
+        return true;
+     }
 
     public void showGameSolvedMessage() {
         System.out.println("\nGame solved.");
