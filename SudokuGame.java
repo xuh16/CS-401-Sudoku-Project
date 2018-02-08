@@ -196,7 +196,8 @@ public class SudokuGame /*implements SudokuInterface*/ {
     }
     public void updateGame(int allowedValue, int row, int col) {
         game[row][col] = allowedValue;
-        System.out.println("\n" + allowedValue + " is placed at row: " + row + " column: " + col + "\n");
+        currentStep++;
+        System.out.println("\nStep " + currentStep + ": " + allowedValue + " is placed at row: " + (row+1) + " column: " + (col+1) + "\n");
         printBoard();
     }
     public boolean hasPuzzleBeenSolved() {
