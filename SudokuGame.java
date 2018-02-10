@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 import sudokugame.SudokuInterface;
 
-public class SudokuGame /*implements SudokuInterface*/ {
+public class SudokuGame implements SudokuInterface {
 
     private static final int BOARD_SIZE = 9;
     private static final int GROUP_SIZE = 3;
@@ -203,11 +203,7 @@ public class SudokuGame /*implements SudokuInterface*/ {
 
         return allowedValuesInCurrentGroup;
     }
-
-//    public int[] getAllowedValuesBasedOnTheThreeRules(int[] allowedValuesInCurrentRow, 
-//            int[] allowedValuesInCurrentCol, int[] allowedValuesInCurrentGroup) {
-//        
-//    }
+    
     public int getTheUniqueAllowedValue(int row, int col) {
         int[] allowedValues = getAllowedValuesInTheCurrentCell(row, col);
         return allowedValues[0];
