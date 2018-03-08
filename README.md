@@ -1,5 +1,6 @@
 # CS-401-Sudoku-Project
 Assignment 1 for CS 401: Sudoku Project
+The project is made by the joint effort of Max Dudek, XuHai Huang, Aman Reddy, and Andrew Schartner 
 
 SudokuGame.java is the source code
 
